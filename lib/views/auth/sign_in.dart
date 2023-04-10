@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tourapp/business_logics/auth.dart';
 import 'package:tourapp/const/app_colors.dart';
 import 'package:tourapp/ui/route/route.dart';
 import 'package:tourapp/ui/styles/styles.dart';
@@ -54,9 +55,7 @@ class _SignInState extends State<SignIn> {
                 SizedBox(
                   height: 40.h,
                 ),
-                VioletButton("Login", () {
-                  SignIn();
-                }),
+                VioletButton("Login", () => Auth().login(_emailController.text, _passwordController.text, context)),
 
                 SizedBox(
                   height: 15.h,

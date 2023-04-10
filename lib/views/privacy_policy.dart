@@ -25,7 +25,7 @@ class PrivacyPolicy extends StatelessWidget {
                VioletButton(
                   "Agree",
                   (){
-                    Get.toNamed(bottomNav);
+                    Get.toNamed(mainHomeScreen);
                   },
                 ),
                 SizedBox(height: 25.h,)

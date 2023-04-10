@@ -39,7 +39,7 @@ Future login (String emailAddress,String password,context)async{
       var authCredential = userCredential.user;
       if (authCredential!.uid.isNotEmpty) {
         Fluttertoast.showToast(msg: 'Login Successfull');
-        Get.toNamed(bottomNav);
+        Get.toNamed(mainHomeScreen);
       } else {
         print("sign in failed");
       }
