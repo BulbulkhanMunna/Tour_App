@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourapp/business_logics/app_languages.dart';
 import 'package:tourapp/ui/route/route.dart';
+import 'package:tourapp/ui/theme/app_theme.dart';
 import 'package:tourapp/views/splash_screen.dart';
 
 import 'const/app_colors.dart';
@@ -59,13 +61,12 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppStrings.appName,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          textTheme: GoogleFonts.poppinsTextTheme(
-            Theme.of(context).textTheme.apply(),
-          ),
-          scaffoldBackgroundColor: AppColors.scaffoldColor,
-        ),
+        translations: AppLanguages(),
+        locale: Locale('en','US'),
+        fallbackLocale: Locale('en','US'),
+        theme: AppTheme().lightTheme(context),
+        darkTheme: AppTheme().darkTheme(context),
+        themeMode: ThemeMode.system,
         initialRoute: splash,
         getPages: getPages,
         home: const SplashScreen(),

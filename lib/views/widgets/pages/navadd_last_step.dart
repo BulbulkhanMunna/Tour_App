@@ -2,6 +2,8 @@
 
 
 
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -45,7 +47,7 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
     setState(() {});
   }
 
-  /*Future uploadImages() async {
+  Future uploadImages() async {
      try {
       if (multipleImage != null) {
         AppStyles().progressDialog(context);
@@ -71,7 +73,7 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
       Fluttertoast.showToast(msg: "Failed");
       Get.back();
     }
-  }*/
+  }
 
   uploadToDB() {
     if (imageUrls.isNotEmpty) {
@@ -94,6 +96,12 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.name);
+    print(widget.description);
+    print(widget.cost);
+    print(widget.facility);
+    print(widget.destination);
+    
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -101,7 +109,7 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customTextField("Phone Number", _dateTimeController),
+              customTextField("Phone Number", _phoneController),
               customTextField("Destination Date & Time", _dateTimeController),
               Text(
                 "Choose Image",
@@ -125,7 +133,7 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                   ),
                 ),
               ),
-             /* Container(
+              Container(
                 height: 150,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -140,18 +148,22 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                                 child: Text("Images are empty"),
                               )
                             : Image.file(
-                                File(multipleImage![i].name),
+                                File(multipleImage![index].path),
                                 fit: BoxFit.cover,
                               ),
                       ),
                     );
                   }),
                 ),
-              ),*/
+              ),
               SizedBox(
                 height: 50.h,
               ),
-              VioletButton("Upload", () {}),
+              VioletButton("Upload", () {
+                uploadImages();
+                Get.back();
+                
+              }),
             ],
           ),
         ),

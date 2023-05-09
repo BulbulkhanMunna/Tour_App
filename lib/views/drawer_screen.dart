@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:tourapp/const/app_strings.dart';
 import 'package:tourapp/ui/route/route.dart';
 import 'package:tourapp/views/widgets/drawer_item.dart';
@@ -40,7 +41,12 @@ class DrawerScreen extends StatelessWidget {
               "FAQ",
               () => Get.toNamed(faqScreen),
             ),
-            drawerItem("Rate Us", () {}),
+            drawerItem("Rate Us", () {
+              LaunchReview.launch(
+                androidAppId: "com.example.tourapp"
+                
+              );
+            }),
             drawerItem(
               "How to use",
               () => Get.toNamed(howtoUseScreen),
